@@ -2,15 +2,19 @@ import React from "react";
 import "./App.css";
 import Navbar from "./components/navbar/index";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { FooterContainer } from "./containers/footer";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route></Route>
-      </Switch>
-    </Router>
+    <>
+      <FooterContainer />
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route></Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

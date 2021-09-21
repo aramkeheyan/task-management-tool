@@ -12,9 +12,7 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-        <NavLink to="/">
-          <h1>Logo here</h1>
-        </NavLink>
+        <NavLink to="/">Logo here</NavLink>
         <Bars />
         <NavMenu>
           <NavLink to="/Reported by me" activeStyle>
