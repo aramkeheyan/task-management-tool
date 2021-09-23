@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   max-width: 1000px;
   margin: 0 auto;
-  /* background: red; */
 `;
 
 export const Column = styled.div`
