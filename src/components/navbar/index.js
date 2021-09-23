@@ -10,28 +10,26 @@ import {
 
 const Navbar = () => {
   return (
-    <>
-      <Nav>
-        <NavLink to="/">Logo here</NavLink>
-        <Bars />
-        <NavMenu>
-          <NavLink to="/Reported by me" activeStyle>
-            Reported by me
-          </NavLink>
-          <NavLink to="/ Assingned to me" activeStyle>
-            Assingned to me
-          </NavLink>
-          <NavLink to="/Create" activeStyle>
-            Create
-          </NavLink>
-        </NavMenu>
-        {
-          //   <NavBtn>
-          //     <NavBtnLink to="/create">Create</NavBtnLink>
-          //   </NavBtn>
-        }
-      </Nav>
-    </>
+    <Nav>
+      <NavLink to="/">Logo here</NavLink>
+      <Bars />
+      <NavMenu>
+        <NavLink to="/Reported by me" activeStyle>
+          Reported by me
+        </NavLink>
+        <NavLink to="/ Assingned to me" activeStyle>
+          Assingned to me
+        </NavLink>
+        <NavLink to="/Create" activeStyle>
+          Create
+        </NavLink>
+      </NavMenu>
+      {
+        //   <NavBtn>
+        //     <NavBtnLink to="/create">Create</NavBtnLink>
+        //   </NavBtn>
+      }
+    </Nav>
   );
 };
 

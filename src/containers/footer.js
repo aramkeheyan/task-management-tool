@@ -40,7 +40,7 @@ export default function StickyFooter() {
         {"Copyright © "}
         <Link
           color="inherit"
-          href="http://localhost:3000/%20Assingned%20to%20me"
+          href="http://localhost:3000/%20Assingned%20to%20me" //to
         >
           Website name
         </Link>{" "}

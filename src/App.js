@@ -1,24 +1,18 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/navbar/index";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import StickyFooter from "./containers/footer";
-//import { StickyFooter } from "./containers/footer";
 
 function App() {
   return (
-    <>
-      <Router>
+    <Switch>
+      <Route path="/">
+        {" "}
         <Navbar />
-        <Switch>
-          <Route></Route>
-        </Switch>
-      </Router>
-
-      <Router>
         <StickyFooter />
-      </Router>
-    </>
+      </Route>
+    </Switch>
   );
 }
 
