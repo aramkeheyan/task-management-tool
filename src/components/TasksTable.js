@@ -49,9 +49,11 @@ const columns = [
 const rows = [
     {
         id: 1,
-        first: 'Jane',
-        last: 'Carter',
-        task: "asd"
+        Title: 'Change CSS',
+        Priority: 'Medium',
+        Reporter: "asd",
+        'Assigned to': "asd",
+        Status: "In Progress",
     },]
 
 let data = { columns, rows }
