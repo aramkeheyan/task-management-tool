@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+=======
+/* @import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+>>>>>>> c8a2b11114f9cc5f4db300026d7829311f44411c
 
 * {
   font-family: "Sora", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
 }
+=======
+} */
+>>>>>>> c8a2b11114f9cc5f4db300026d7829311f44411c
 /*
 .App {
   display: flex;
@@ -47,3 +55,10 @@
     transform: rotate(360deg);
   }
 } */
+<<<<<<< HEAD
+=======
+
+.img {
+  z-index: 50;
+}
+>>>>>>> c8a2b11114f9cc5f4db300026d7829311f44411c
