@@ -1,11 +1,20 @@
-import logo from "./logo.svg";
+import React from "react";
 import "./App.css";
-import Tickets from "./Components/Tickets";
-import Tickets1 from "./Components/Tickets1";
+import Navbar from "./components/navbar/index";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import StickyFooter from "./containers/footer";
+import ColumnSelectorGrid from "./components/TasksTable";
+
 function App() {
   return (
     <div className="App">
-      <Tickets1></Tickets1>
+      <Switch>
+        <Route path="/">
+          <Navbar />
+          <ColumnSelectorGrid />
+          <StickyFooter />
+        </Route>
+      </Switch>
     </div>
   );
 }
