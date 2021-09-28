@@ -17,7 +17,7 @@ function App() {
           <StickyFooter />
         </Route>
       </Switch>
-  </div>
+    </div>
   );
 }
 

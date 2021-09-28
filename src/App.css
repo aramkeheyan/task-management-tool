@@ -1,17 +1,16 @@
-
-/* @import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora&display=swap");
 
 * {
   font-family: "Sora", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-} */
+}
 
 .App {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .App-logo {
