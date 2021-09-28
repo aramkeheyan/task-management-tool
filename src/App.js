@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Navbar from "./components/navbar/index";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import StickyFooter from "./containers/footer";
+import ColumnSelectorGrid from "./components/TasksTable";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn
-      
-        </a>
-      </header>
+      <Switch>
+        <Route path="/">
+          <Navbar />
+          <ColumnSelectorGrid />
+          <StickyFooter />
+        </Route>
+      </Switch>
     </div>
   );
 }
