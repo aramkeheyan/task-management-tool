@@ -4,6 +4,8 @@ import Navbar from "./components/navbar/index";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 import StickyFooter from "./containers/footer";
 import ColumnSelectorGrid from "./components/TasksTable";
+import TaskDetailed from "./components/TaskDetailed";
+import Create from "./modals/create";
 
 function App() {
   return (
@@ -13,8 +15,12 @@ function App() {
           <div>
             <Navbar />
           </div>
+          <div>
+            <Create />
+          </div>
 
           <div>
+            <TaskDetailed />
             <ColumnSelectorGrid />
           </div>
           <div>
