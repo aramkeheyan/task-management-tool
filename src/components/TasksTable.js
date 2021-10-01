@@ -22,42 +22,42 @@ const useStyles = makeStyles({
         '& .low': {
             color: 'black',
         },
-
     },
+  },
 });
 
 const columns = [
-    {
-        field: 'Title',
-        headerClassName: 'super-app-theme--header',
-        width: 200,
-        description: "Title"
-    },
-    {
-        field: 'Priority',
-        headerClassName: 'super-app-theme--header',
-        width: 200,
-        description: "Priority"
-    },
-    {
-        field: 'Reporter',
-        headerClassName: 'super-app-theme--header',
-        width: 200,
-        description: "Reporter"
-    },
-    {
-        field: 'Assigned to',
-        headerClassName: 'super-app-theme--header',
-        width: 200,
-        description: "Assigned to"
-    },
-    {
-        field: 'Status',
-        headerClassName: 'super-app-theme--header',
-        width: 200,
-        description: "Workflow Status"
-    },
-]
+  {
+    field: "Title",
+    headerClassName: "super-app-theme--header",
+    width: 200,
+    description: "Title",
+  },
+  {
+    field: "Priority",
+    headerClassName: "super-app-theme--header",
+    width: 200,
+    description: "Priority",
+  },
+  {
+    field: "Reporter",
+    headerClassName: "super-app-theme--header",
+    width: 200,
+    description: "Reporter",
+  },
+  {
+    field: "Assigned to",
+    headerClassName: "super-app-theme--header",
+    width: 200,
+    description: "Assigned to",
+  },
+  {
+    field: "Status",
+    headerClassName: "super-app-theme--header",
+    width: 200,
+    description: "Workflow Status",
+  },
+];
 const rows = [
     {
         id: 1,
@@ -85,17 +85,31 @@ const rows = [
     },
 ]
 
-
-let data = { columns, rows }
+let data = { columns, rows };
 
 export default function ColumnSelectorGrid() {
-    // const { data } = useDemoData({
-    //   dataSet: 'Commodity',
-    //   rowLength: 10,
-    //   maxColumns: 10,
-    // });
-    let classes = useStyles()
+  // const { data } = useDemoData({
+  //   dataSet: 'Commodity',
+  //   rowLength: 10,
+  //   maxColumns: 10,
+  // });
+  let classes = useStyles();
 
+  return (
+    <div style={{ height: 650, width: "66%" }}>
+      <DataGrid
+        className={classes.root}
+        // columns={columns}
+        // rows={rows}
+        {...data}
+        components={{
+          Toolbar: GridToolbar,
+          color: "15cdfc",
+        }}
+      />
+    </div>
+  );
+}
     return (
         <div style={{ height: 650, width: '66%', }} className={classes.root}>
             <Switch>
