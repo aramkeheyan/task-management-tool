@@ -17,6 +17,7 @@ const Values = {
   assignee: "",
   reporter: "",
   priority: "low",
+  status: "draft",
 };
 
 export const priorityOptions = () => [
@@ -50,6 +51,8 @@ export default function Create() {
       temp.assignee = Values.assignee ? "" : "This field is required.";
     if ("reporter" in Values)
       temp.reporter = Values.reporter ? "" : "This field is required.";
+    if ("status" in Values)
+      temp.status = Values.status ? "" : "This field is required.";
 
     setErrors({
       ...temp,
