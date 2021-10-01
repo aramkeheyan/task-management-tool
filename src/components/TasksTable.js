@@ -1,12 +1,27 @@
 import React from "react";
-import { uuidv4 } from "uuid";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { makeStyles } from "@material-ui/styles";
+import { uuidv4 } from 'uuid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { makeStyles } from '@material-ui/styles'
+import { Route, Switch } from "react-router";
 
 const useStyles = makeStyles({
-  root: {
-    "& .super-app-theme--header": {
-      // backgroundColor: "red"
+    root: {
+        '& .super-app-theme--header': {
+            // backgroundColor: "red"
+        },
+        '& .medium': {
+            backgroundColor: 'yellow',
+            color: 'black',
+            borderRadius: 5,
+        },
+        '& .high': {
+            backgroundColor: 'red',
+            color: 'black',
+            borderRadius: 5,
+        },
+        '& .low': {
+            color: 'black',
+        },
     },
   },
 });
@@ -44,15 +59,31 @@ const columns = [
   },
 ];
 const rows = [
-  {
-    id: 1,
-    Title: "Change CSS",
-    Priority: "Medium",
-    Reporter: "asd",
-    "Assigned to": "asd",
-    Status: "In Progress",
-  },
-];
+    {
+        id: 1,
+        Title: 'Change CSS',
+        Priority: 'Medium',
+        Reporter: "asd",
+        'Assigned to': "asd",
+        Status: "In Progress",
+    },
+    {
+        id: 2,
+        Title: 'Change CSS',
+        Priority: 'Low',
+        Reporter: "asd",
+        'Assigned to': "asd",
+        Status: "In Progress",
+    },
+    {
+        id: 3,
+        Title: 'Change CSS',
+        Priority: 'High',
+        Reporter: "asd",
+        'Assigned to': "asd",
+        Status: "In Progress",
+    },
+]
 
 let data = { columns, rows };
 
@@ -78,4 +109,25 @@ export default function ColumnSelectorGrid() {
       />
     </div>
   );
+}
+    return (
+        <div style={{ height: 650, width: '66%', }} className={classes.root}>
+            <Switch>
+                <Route exact path="/">
+                    <DataGrid
+                        getCellClassName={(column) => {
+                            if (column.field === 'Priority') {
+                                if (column.value === "Low") return "low"
+                                return column.value === "High" ? "high" : "medium"
+                            }
+                        }}
+                        {...data}
+                        components={{
+                            Toolbar: GridToolbar,
+                        }}
+                    />
+                </Route>
+            </Switch>
+        </div>
+    );
 }
