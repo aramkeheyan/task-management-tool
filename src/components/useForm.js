@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
+import color from "material-ui/colors/amber";
 
 export function useForm(initialFValues, validateOnChange = false, validate) {
   const [values, setValues] = useState(initialFValues);
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiFormControl-root": {
       width: "80%",
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
     },
   },
 }));
