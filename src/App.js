@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/navbar/index";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import StickyFooter from "./containers/footer";
 import ColumnSelectorGrid from "./components/TasksTable";
 

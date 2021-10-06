@@ -1,0 +1,1 @@
+export const selectTask = ({ data: { tasks } }) => tasks
