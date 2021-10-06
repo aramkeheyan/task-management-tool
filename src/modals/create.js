@@ -10,21 +10,21 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { CREATE } from "../constants/paths";
 
-const Values = {
+const taskValues = {
   id: 0,
   title: "",
   description: "",
   assignee: "",
   reporter: "",
-  priority: "low",
-  status: "draft",
+  priority: "",
+  status: "",
 };
 
-export const priorityOptions = () => [
-  { id: "1", title: "low" },
-  { id: "2", title: "medium" },
-  { id: "3", title: "high" },
-];
+const statusItems = [
+  { id: 'draft', title: 'Draft' },
+  { id: 'in progress', title: 'In progress' },
+  { id: 'done', title: 'Done' },
+]
 
 export default function Create() {
   const history = useHistory();
@@ -40,29 +40,30 @@ export default function Create() {
     history.goBack();
   };
 
-  const validate = (Values = values) => {
+  const validate = (values = taskValues) => {
     let temp = { ...errors };
-    if ("title" in Values)
-      temp.title = Values.title ? "" : "This field is required.";
-    if ("description" in Values)
+    if ("title" in values)
+      temp.title = values.title ? "" : "This field is required.";
+    if ("description" in values)
       temp.description =
-        Values.description.length > 9 ? "" : "Minimum 10 words required.";
-    if ("assignee" in Values)
-      temp.assignee = Values.assignee ? "" : "This field is required.";
-    if ("reporter" in Values)
-      temp.reporter = Values.reporter ? "" : "This field is required.";
-    if ("status" in Values)
-      temp.status = Values.status ? "" : "This field is required.";
+        values.description.length > 9 ? "" : "Minimum 10 words required.";
+    if ("assignee" in values)
+      temp.assignee = values.assignee ? "" : "This field is required.";
+    if ("reporter" in values)
+      temp.reporter = values.reporter ? "" : "This field is required.";
+    if ("status" in values)
+      temp.status = values.status ? "" : "This field is required.";
 
     setErrors({
       ...temp,
     });
 
-    if (Values === values) return Object.values(temp).every((x) => x === "");
+    if (values === taskValues)
+      return Object.values(temp).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
-    useForm(Values, true, validate);
+    useForm(taskValues, true, validate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,9 +78,6 @@ export default function Create() {
       <Switch>
         <Route path={CREATE}>
           <div>
-            <Button variant="primary" onClick={handleClickOpen}>
-              Create
-            </Button>
             <Dialog
               open={true}
               onClose={handleClose}
@@ -112,30 +110,40 @@ export default function Create() {
                         name="assignee"
                         value={values.assignee}
                         onChange={handleInputChange}
-                        error={errors.assignee}
+                        error={errors.assignee} //ketic araj harcakan dnel
                       />
                       <Controls.Input
                         label="Reporter"
                         name="reporter"
                         value={values.reporter}
                         onChange={handleInputChange}
+                        error={errors.reporter}
                       />
                     </Grid>
-                    <Controls.Select
-                      name="priroity"
-                      label="Priroity"
-                      value={values.priority}
-                      onChange={handleInputChange}
-                      options={priorityOptions}
-                      error={errors.priority}
+                    <Grid item xs={6}>
+                      <Controls.Select
+                        name="priority"
+                        label="Priority"
+                        value={values.priority}
+                        onChange={handleInputChange}
+                        options={taskValues}
+                        error={errors.priority}
+                      />
+                       <Controls.RadioGroup
+                        name="status"
+                        label="Status"
+                        value={values.status}
+                        onChange={handleInputChange}
+                        items={statusItems}
                     />
+                    </Grid>
                   </Grid>
                 </Form>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleClose}>Disagree</Button>
+                <Button onClick={handleClose}>Create</Button>
                 <Button onClick={handleClose} autoFocus>
-                  Agree
+                  Cancel
                 </Button>
               </DialogActions>
             </Dialog>

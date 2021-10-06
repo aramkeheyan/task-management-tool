@@ -4,28 +4,19 @@ import {
   InputLabel,
   Select as MuiSelect,
   MenuItem,
-  FormHelperText,
 } from "@material-ui/core";
 
 export default function Select(props) {
-  const { name, label, value, error = null, onChange, options } = props;
+  const { name, label, value, error = null, onChange } = props;
 
   return (
     <FormControl variant="outlined" {...(error && { error: true })}>
-      <InputLabel>{label}</InputLabel>
+      <InputLabel>Prioraity</InputLabel>
       <MuiSelect label={label} name={name} value={value} onChange={onChange}>
-        <MenuItem value="">None</MenuItem>
-        <MenuItem value="">Low</MenuItem>
-        <MenuItem value="">Medium</MenuItem>
-        <MenuItem value="">High</MenuItem>
-
-        {[options].map((item) => (
-          <MenuItem key={item.id} value={item.id}>
-            {item.title}
-          </MenuItem>
-        ))}
+        <MenuItem value="low">low</MenuItem>
+        <MenuItem value="medium">medium</MenuItem>
+        <MenuItem value="high">high</MenuItem>
       </MuiSelect>
-      {error && <FormHelperText>{error}</FormHelperText>}
     </FormControl>
   );
 }

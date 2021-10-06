@@ -4,9 +4,10 @@ import Navbar from "./components/navbar/index";
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 import StickyFooter from "./containers/footer";
 import ColumnSelectorGrid from "./components/TasksTable";
-import TaskDetailed from "./components/TaskDetailed";
+// import TaskDetailed from "./components/TaskDetailed";
 import Create from "./modals/create";
-
+import SignUp from "./components/Logins/signUp";
+import SignIn from "./components/Logins/signIn";
 function App() {
   return (
     <>
@@ -15,14 +16,20 @@ function App() {
           <div>
             <Navbar />
           </div>
+
+          <div>
+            <SignUp />
+            <SignIn />
+          </div>
+
           <div>
             <Create />
           </div>
 
           <div>
-            <TaskDetailed />
             <ColumnSelectorGrid />
           </div>
+
           <div>
             <StickyFooter />
           </div>
