@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 import initialState from "../../initialState";
-import { SET_LOGGED_IN_USER, SIGN_OUT } from "../../actionTypes/";
+import { SET_LOGGED_IN_USER, SIGN_OUT } from "../../actionTypes/auth";
 
 const reducer = handleActions({
     [SET_LOGGED_IN_USER]: (state, { payload }) => {
