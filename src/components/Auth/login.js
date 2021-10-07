@@ -1,7 +1,7 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { setLoggedInUser } from "../../redux/common/auth/actions";
+import { auth } from "../../firebase"
 
-const auth = getAuth()
 async function signIn({ email, password }, dispatch) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password)

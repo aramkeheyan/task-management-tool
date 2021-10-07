@@ -14,6 +14,7 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { getAuth, signOut } from "firebase/auth";
 import { useDispatch } from "react-redux"
 import logOut from "../auth/signOut";
+import { auth } from "../../firebase"
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -62,7 +63,6 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const auth = getAuth();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux"
 import { getAuth, signOut } from "firebase/auth";
 import { setLoggedInUser } from "../../redux/common/auth/actions";
+import { auth } from "../../firebase"
 
-const auth = getAuth()
+
 const logOut = (dispatch) => {
     signOut(auth).then(() => {
         dispatch(setLoggedInUser(null))

@@ -1,7 +1,8 @@
 import setLoggedInUser from "./actions"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase"
 
-const auth = getAuth();
+
 const register = ({ name, surname, email, password }) => async () => {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);

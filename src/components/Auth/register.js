@@ -2,10 +2,10 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from "../../firebase";
 import { setLoggedInUser } from "../../redux/common/auth/actions";
 import { collection, addDoc } from "firebase/firestore";
+import { auth } from "../../firebase"
 
 //use thunk here
 
-const auth = getAuth()
 async function register({ firstName, lastName, email, password }, dispatch) {
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
