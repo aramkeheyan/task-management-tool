@@ -3,6 +3,7 @@ import { uuidv4 } from "uuid";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { makeStyles } from "@material-ui/styles";
 import { Route, Switch } from "react-router";
+import { MAIN_PAGE } from "../constants/paths";
 
 const useStyles = makeStyles({
   root: {
@@ -95,9 +96,9 @@ export default function ColumnSelectorGrid() {
   let classes = useStyles();
 
   return (
-    <div style={{ height: 650, width: "66%" }} className={classes.root}>
-      <Switch>
-        <Route exact path="/">
+    <Switch>
+      <Route exact path={MAIN_PAGE}>
+        <div style={{ height: 650, width: "75%" }} className={classes.root}>
           <DataGrid
             getCellClassName={(column) => {
               if (column.field === "Priority") {
@@ -110,8 +111,8 @@ export default function ColumnSelectorGrid() {
               Toolbar: GridToolbar,
             }}
           />
-        </Route>
-      </Switch>
-    </div>
+        </div>
+      </Route>
+    </Switch>
   );
 }

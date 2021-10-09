@@ -11,6 +11,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import FaceRetouchingNaturalSharpIcon from "@mui/icons-material/FaceRetouchingNaturalSharp";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { getAuth, signOut } from "firebase/auth";
+import { useDispatch } from "react-redux"
+import logOut from "../auth/signOut";
+import { auth } from "../../firebase"
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -56,6 +60,7 @@ const StyledMenu = styled((props) => (
 }));
 
 const Navbar = () => {
+  const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -66,6 +71,12 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleSignOutClick = () => {
+    logOut(dispatch)
+    handleClose()
+  }
+
   return (
     <>
       <Nav>
@@ -123,7 +134,7 @@ const Navbar = () => {
               </MenuItem>
 
               <Divider sx={{ my: 0.5 }} />
-              <MenuItem onClick={handleClose} disableRipple>
+              <MenuItem onClick={handleSignOutClick} disableRipple>
                 <ExitToAppIcon />
                 Sign out
               </MenuItem>
