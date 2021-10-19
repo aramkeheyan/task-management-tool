@@ -15,5 +15,6 @@ const RootReducer = (state, action) => {
 }
 
 const store = createStore(RootReducer, applyMiddleware(thunk))
+window.storik = store
 
 export default store

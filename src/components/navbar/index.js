@@ -1,5 +1,6 @@
 import { Avatar, Button } from "material-ui";
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import { ASSIGNED_TO_ME, CREATE, REPORTED_BY_ME } from "../../constants/paths";
 import { Nav, NavLink, Bars, NavMenu, NavBtnLink } from "../navbarComponents";
 import Logo from "../pics/image2vector.svg";
@@ -15,6 +16,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useDispatch } from "react-redux"
 import logOut from "../auth/signOut";
 import { auth } from "../../firebase"
+import Profile from "../Profiles/profile";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -77,6 +79,12 @@ const Navbar = () => {
     handleClose()
   }
 
+  const handleSettingClick = () => {
+    Profile(dispatch);
+    handleClose()
+
+  }
+
   return (
     <>
       <Nav>
@@ -87,7 +95,7 @@ const Navbar = () => {
             Reported by me
           </NavLink>
           <NavLink to={ASSIGNED_TO_ME} activeStyle>
-            Assingned to me
+            Assigned to me
           </NavLink>
 
           <NavBtnLink to={CREATE} activeStyle>
@@ -128,9 +136,11 @@ const Navbar = () => {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose} disableRipple>
-                <EditIcon />
-                Settings
+              <MenuItem onClick={handleSettingClick} disableRipple>
+                <Link to="/profile"> 
+                  <EditIcon />Settings
+                </Link>
+                
               </MenuItem>
 
               <Divider sx={{ my: 0.5 }} />

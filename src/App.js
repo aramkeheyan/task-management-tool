@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/index";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import StickyFooter from "./containers/footer";
 import ColumnSelectorGrid from "./components/TasksTable";
 // import TaskDetailed from "./components/TaskDetailed";
@@ -11,13 +11,16 @@ import SignIn from "./components/Logins/signIn";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { useHistory } from "react-router";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setLoggedInUser } from "./redux/common/auth/actions";
-import { SIGN_IN, SIGN_UP, MAIN_PAGE } from "./constants/paths";
+import { SIGN_IN, SIGN_UP, MAIN_PAGE, PROFILE } from "./constants/paths";
+import Profile from "./components/Profiles/profile";
 
 function App() {
   const history = useHistory()
   const dispatch = useDispatch()
+  const loggedInUser = useSelector(state => state.auth.loggedInUser)
+
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user) {
@@ -28,19 +31,18 @@ function App() {
       }
 
     })
-  }, [dispatch, history])
+  }, [])
   return (
     <>
       <Switch>
-        <Route path="/">
+          
+        <Route exact path={MAIN_PAGE}>
           <div>
             <Navbar />
             <Create />
           </div>
 
           <div className="container">
-            <SignUp />
-            <SignIn />
             <ColumnSelectorGrid />
           </div>
 
@@ -48,6 +50,10 @@ function App() {
             <StickyFooter />
           </div>
         </Route>
+        <Route path={PROFILE} component={Profile} />
+        <Route path={SIGN_IN} component={SignIn} />
+        <Route path={SIGN_UP} component={SignUp} />
+        <Route path="*">404</Route>
       </Switch>
     </>
   );
