@@ -4,9 +4,9 @@ import Avatar from '@mui/material/Avatar';
 
 export default function ImageAvatars() {
   return (
-    <Avatar alt="Rose" 
+    <Avatar alt="Katy Salvador" 
     src="../src/components/pics/minion.png" 
-    sx={{ width: 100, height: 100 }} 
+    sx={{ width: 130, height: 130 }} 
     />
   );
 }

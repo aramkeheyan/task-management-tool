@@ -14,7 +14,7 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux"
 import { setLoggedInUser } from "./redux/common/auth/actions";
 import { SIGN_IN, SIGN_UP, MAIN_PAGE, PROFILE } from "./constants/paths";
-import Profile from "./components/Profiles/profile";
+import Profile from "./components/Profiles/Profile";
 
 function App() {
   const history = useHistory()

@@ -1,16 +1,18 @@
-
 import React from 'react'
 import StickyFooter from '../../containers/footer'
 import Create from '../../modals/create'
 import Navbar from '../navbar'
-import Avatar from "../Profiles/Avatar"
+import Avatar from "./Avatar"
 import ProfileData from "./ProfileData"
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { Input } from '@mui/icons-material'
+import { Input } from '@mui/icons-material';
 
 export default function Profile() {
+    const changePhoto = () => {
+
+    }
     return (
         <>
             <Navbar />
@@ -18,7 +20,7 @@ export default function Profile() {
             <Container maxWidth="md">
                 <Avatar/>
                 <label htmlFor="contained-button-file">
-                    <Button variant="contained" component="span">
+                    <Button variant="contained" component="span" onClick={changePhoto}>
                      Change photo
                     <Input accept="image/*" id="contained-button-file" multiple type="file" />
                     </Button>
@@ -27,14 +29,16 @@ export default function Profile() {
             <br></br>
             <TextareaAutosize
                 aria-label="minimum height"
-                minRows={3}
-                maxRows={5}
+                minRows={5}
+                maxRows={55}
                 placeholder="About me"
                 style={{ width: 300 }}
             />
             <br></br>
             <br></br>
                 <ProfileData />
+            <br></br>
+                <Button variant="outlined">Save changes</Button>
             </Container>
             <StickyFooter />
         </>

@@ -16,7 +16,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useDispatch } from "react-redux"
 import logOut from "../auth/signOut";
 import { auth } from "../../firebase"
-import Profile from "../Profiles/profile";
+import Profile from "../Profiles/Profile";
 
 const StyledMenu = styled((props) => (
   <Menu
