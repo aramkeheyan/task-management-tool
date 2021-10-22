@@ -1,6 +1,6 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk"
-import { reduxFirestore, firestoreReducer, createFirestoreInstance } from 'redux-firestore'
+import { firestoreReducer } from 'redux-firestore'
 import auth from "./common/auth/reducer"
 import data from "./common/tasks/reducer"
 

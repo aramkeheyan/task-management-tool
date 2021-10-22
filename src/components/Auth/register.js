@@ -1,8 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { db } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setLoggedInUser } from "../../redux/common/auth/actions";
 import { collection, addDoc } from "firebase/firestore";
-import { auth } from "../../firebase"
+import { auth, db } from "../../firebase"
 
 //use thunk here
 

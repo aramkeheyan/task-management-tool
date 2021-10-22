@@ -1,7 +1,6 @@
 import { Avatar, Button } from "material-ui";
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-import { ASSIGNED_TO_ME, CREATE, REPORTED_BY_ME } from "../../constants/paths";
+import { ASSIGNED_TO_ME, CREATE, PROFILE, REPORTED_BY_ME } from "../../constants/paths";
 import { Nav, NavLink, Bars, NavMenu, NavBtnLink } from "../navbarComponents";
 import Logo from "../pics/image2vector.svg";
 import { styled, alpha } from "@mui/material/styles";
@@ -12,11 +11,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import FaceRetouchingNaturalSharpIcon from "@mui/icons-material/FaceRetouchingNaturalSharp";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { getAuth, signOut } from "firebase/auth";
 import { useDispatch } from "react-redux"
 import logOut from "../auth/signOut";
-import { auth } from "../../firebase"
-import Profile from "../Profiles/Profile";
+import { Link } from "react-router-dom";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -79,12 +76,6 @@ const Navbar = () => {
     handleClose()
   }
 
-  const handleSettingClick = () => {
-    Profile(dispatch);
-    handleClose()
-
-  }
-
   return (
     <>
       <Nav>
@@ -136,11 +127,11 @@ const Navbar = () => {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleSettingClick} disableRipple>
-                <Link to="/profile"> 
-                  <EditIcon />Settings
+              <MenuItem onClick={handleClose} disableRipple>
+                <Link to={PROFILE}>
+                  <EditIcon />
+                  Settings
                 </Link>
-                
               </MenuItem>
 
               <Divider sx={{ my: 0.5 }} />

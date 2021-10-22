@@ -1,6 +1,7 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { setLoggedInUser } from "../../redux/common/auth/actions";
 import { auth } from "../../firebase"
+
 
 async function signIn({ email, password }, dispatch) {
     try {

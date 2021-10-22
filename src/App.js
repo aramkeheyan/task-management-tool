@@ -22,14 +22,18 @@ function App() {
   const loggedInUser = useSelector(state => state.auth.loggedInUser)
 
   useEffect(() => {
+    // console.log("useEffect", loggedInUser)
+    // if(!loggedInUser) {
+    //   history.push(SIGN_IN)
+    // }
+    
     onAuthStateChanged(auth, user => {
       if (user) {
         dispatch(setLoggedInUser(user)) // user || auth.currentUser
-        history.push(MAIN_PAGE) // potential bug
+        //history.push(MAIN_PAGE) // potential bug
       } else {
         history.push(SIGN_IN)
       }
-
     })
   }, [])
   return (
@@ -37,6 +41,9 @@ function App() {
       <Switch>
           
         <Route exact path={MAIN_PAGE}>
+          {
+            loggedInUser === null && <Redirect to={SIGN_IN}/>
+          }
           <div>
             <Navbar />
             <Create />

@@ -12,7 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { makeStyles } from "@material-ui/styles";
 import { Link as RouterLink, Redirect } from "react-router-dom";
-import { MAIN_PAGE, SIGN_IN, SIGN_UP } from "../../constants/paths";
+import { MAIN_PAGE, SIGN_UP } from "../../constants/paths";
 import signIn from "../auth/login";
 import { useDispatch, useSelector } from "react-redux"
 

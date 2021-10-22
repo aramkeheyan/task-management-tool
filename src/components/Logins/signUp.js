@@ -10,12 +10,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { MAIN_PAGE, SIGN_IN, SIGN_UP } from "../../constants/paths";
+import { MAIN_PAGE, SIGN_IN } from "../../constants/paths";
 import { Redirect, Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import register from "../auth/register";
 import { useDispatch, useSelector } from "react-redux"
-// import register from "./auth/signUp"
 
 const useStyles = makeStyles({
   root: {

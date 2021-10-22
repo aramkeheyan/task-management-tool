@@ -5,7 +5,6 @@ import { useEffect } from "react"
 import { setLoggedInUser } from "../../redux/common/auth/actions";
 import { MAIN_PAGE, SIGN_IN } from "../../constants/paths";
 import { useHistory } from "react-router";
-import { onSnapshot } from "@firebase/firestore";
 
 function AuthObserver() {
     const history = useHistory()
