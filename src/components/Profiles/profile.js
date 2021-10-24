@@ -1,6 +1,6 @@
 import React from 'react'
 import StickyFooter from '../../containers/footer'
-import Create from '../../modals/create'
+import Create from '../../modals/Create'
 import Navbar from '../navbar'
 import Avatar from "./Avatar"
 import ProfileData from "./ProfileData"

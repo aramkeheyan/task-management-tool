@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import StickyFooter from "./containers/footer";
 import ColumnSelectorGrid from "./components/TasksTable";
 // import TaskDetailed from "./components/TaskDetailed";
-import Create from "./modals/create";
+import Create from "./modals/Create";
 import SignUp from "./components/Logins/signUp";
 import SignIn from "./components/Logins/signIn";
 import { onAuthStateChanged } from "firebase/auth";
@@ -13,7 +13,7 @@ import { auth } from "./firebase";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux"
 import { setLoggedInUser } from "./redux/common/auth/actions";
-import { SIGN_IN, SIGN_UP, MAIN_PAGE, PROFILE } from "./constants/paths";
+import { SIGN_IN, SIGN_UP, MAIN_PAGE, PROFILE, REPORTED_BY_ME, ASSIGNED_TO_ME, CREATE } from "./constants/paths";
 import Profile from "./components/Profiles/Profile";
 
 function App() {
@@ -60,6 +60,9 @@ function App() {
         <Route path={PROFILE} component={Profile} />
         <Route path={SIGN_IN} component={SignIn} />
         <Route path={SIGN_UP} component={SignUp} />
+        <Route path={REPORTED_BY_ME} />
+        <Route path={ASSIGNED_TO_ME} />
+        <Route path={CREATE} component={Create} />
         <Route path="*">404</Route>
       </Switch>
     </>

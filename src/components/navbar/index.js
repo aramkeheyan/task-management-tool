@@ -1,6 +1,6 @@
 import { Avatar, Button } from "material-ui";
 import React, { useState } from "react";
-import { ASSIGNED_TO_ME, CREATE, PROFILE, REPORTED_BY_ME } from "../../constants/paths";
+import { ASSIGNED_TO_ME, CREATE, MAIN_PAGE, PROFILE, REPORTED_BY_ME } from "../../constants/paths";
 import { Nav, NavLink, Bars, NavMenu, NavBtnLink } from "../navbarComponents";
 import Logo from "../pics/image2vector.svg";
 import { styled, alpha } from "@mui/material/styles";
@@ -79,9 +79,10 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="" /> {/* Logo should redirect to main page when clicked} */}
         <Bars />
         <NavMenu>
+          <NavLink to={MAIN_PAGE} activeStyle> Main page </NavLink>
           <NavLink to={REPORTED_BY_ME} activeStyle>
             Reported by me
           </NavLink>
@@ -95,7 +96,7 @@ const Navbar = () => {
           <div>
             <Button
               style={{
-                left: "1000%",
+                left: "900%",
               }}
               id="demo-customized-button"
               aria-controls="demo-customized-menu"
