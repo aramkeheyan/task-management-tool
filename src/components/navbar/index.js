@@ -15,6 +15,11 @@ import { useDispatch } from "react-redux"
 import logOut from "../auth/signOut";
 import { Link } from "react-router-dom";
 
+////////////////////
+import { collection, doc } from "@firebase/firestore";
+import { db } from "../../firebase";
+
+
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}

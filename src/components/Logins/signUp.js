@@ -13,8 +13,14 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { MAIN_PAGE, SIGN_IN } from "../../constants/paths";
 import { Redirect, Link as RouterLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
-import register from "../auth/register";
+// import Register from "../auth/register";
 import { useDispatch, useSelector } from "react-redux"
+
+///////////////////////// register.js has been incorporated/unified here
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setLoggedInUser } from "../../redux/common/auth/actions";
+import { collection, addDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase";
 
 const useStyles = makeStyles({
   root: {
@@ -34,6 +40,25 @@ const useStyles = makeStyles({
 
 const theme = createTheme();
 
+async function Register({ firstName, lastName, email, password }, dispatch) {
+  //use thunk here
+   try {
+       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+       const user = userCredential.user
+       const docRef = await addDoc(collection(db, "users"), {
+           uid: user.uid,
+           firstName,
+           lastName,
+           email,
+           authProvider: "local",
+       });
+       dispatch(setLoggedInUser(user));
+      // console.log ("The new ID is: " + docRef.id);
+   } catch (err) {
+       console.log(err.code, err.message)
+   }
+}
+
 export default function SignUp() {
   const loggedInUser = useSelector(state => state.auth.loggedInUser)
   const dispatch = useDispatch()
@@ -46,7 +71,7 @@ export default function SignUp() {
       firstName: data.get("firstName"),
       lastName: data.get("lastName"),
     };
-    register(userRegistrationData, dispatch)
+    Register(userRegistrationData, dispatch)
   };
 
   let classes = useStyles();

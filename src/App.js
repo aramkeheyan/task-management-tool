@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/index";
 import { Switch, Route, Redirect } from "react-router-dom";
@@ -9,17 +9,30 @@ import Create from "./modals/Create";
 import SignUp from "./components/Logins/signUp";
 import SignIn from "./components/Logins/signIn";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux"
 import { setLoggedInUser } from "./redux/common/auth/actions";
 import { SIGN_IN, SIGN_UP, MAIN_PAGE, PROFILE, REPORTED_BY_ME, ASSIGNED_TO_ME, CREATE } from "./constants/paths";
 import Profile from "./components/Profiles/Profile";
+///////
+// import { onSnapshot, collection } from "@firebase/firestore";
 
 function App() {
   const history = useHistory()
   const dispatch = useDispatch()
   const loggedInUser = useSelector(state => state.auth.loggedInUser)
+  ///////////////////////////
+  // const [user, setUser] = useState();
+
+  // console.log(user);
+  // useEffect(
+  //   () => 
+  //   onSnapshot(collection(db, "users"), (snapshot)=> 
+  //     setUser(snapshot.docs.map(doc => doc.data()))
+  //   ),
+  //   []
+  // )
 
   useEffect(() => {
     // console.log("useEffect", loggedInUser)

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -15,35 +15,35 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 // import Dialogs from "../Profiles/Dialogs"
 
+///////////////////////////////FireStore dependencies
+import { onSnapshot, collection } from "firebase/firestore";
+import { db } from "../../firebase";
+
+
 
 export default function DescriptionTable() {
-   const[name, setName] = useState("Sebastian");
-   const[surname, setSurname] = useState("Hamilton");
-   const[email, setEmail] = useState("KWaca@gmail.com");
+  //  const[name, setName] = useState("");
+  //  const[surname, setSurname] = useState("Hamilton");
+  //  const[email, setEmail] = useState("KWaca@gmail.com");
 
 
    ///////////////////////// Dialog
    const FormDialog = (props)=> {
     const [open, setOpen] = useState(false);
-  
+   /////////////////////////// Edit button dialog - start
     const handleClickOpen = () => {
       setOpen(true);
     };
     const handleClose = () => {
       setOpen(false);
     };
-  
-    const handleCloseSave = (evt) => {
-      if (props="firstName") {
-        setName(evt.props.value);
-      } else if("lastName") {
-        setSurname(evt.target.value);
-      }
+    const handleCloseSave = () => {
       setOpen(false);
     };
     const handleCloseCancel = () => {
       setOpen(false);
     };
+
     return (
       <div>
         <Button variant="outlined" onClick={handleClickOpen}>
@@ -70,30 +70,49 @@ export default function DescriptionTable() {
       </div>
     );
   }
+  ///////////////////////// Edit button dialog - end
+
 //////////////////////////////////////////// Main return 
+    /////////////////////////////////////////
+    const [users, setUsers] = useState([]);
+    console.log(users);
+    useEffect(
+      () => 
+      onSnapshot(collection(db, "users"), (snapshot)=> 
+        setUsers(snapshot.docs.map(doc => doc.data()))
+      ),
+      []
+    )
+    ///////////////////////////////////////
     return (
     <TableContainer
      component={Paper}>
       <Table sx={{ minWidth: 400 }} size="medium" aria-label="a dense table">
         <TableBody>
-          
-          <TableRow hover="true">
+        {users.map((user) => 
+          <TableRow hover="true" key={user.id}>
             <TableCell>First Name: </TableCell>
-            <TableCell props="firstName"  align="left">{name}</TableCell>
+            <TableCell align="left">{user.firstName}</TableCell>
             <FormDialog />
           </TableRow>
-         
-          <TableRow hover="true" >
+          )
+        }
+        {users.map((user) => 
+          <TableRow hover="true" key={user.id} >
             <TableCell>Last Name: </TableCell>
-            <TableCell align="left">{surname}</TableCell>
+            <TableCell align="left">{user.lastName}</TableCell>
             <FormDialog />
           </TableRow>
-        
-          <TableRow hover="true">
+          )
+        }
+        {users.map((user) => 
+          <TableRow hover="true" key={user.id}>
             <TableCell>Email: </TableCell>
-            <TableCell align="left">{email}</TableCell>
+            <TableCell align="left">{user.email}</TableCell>
             <FormDialog />
           </TableRow>
+         )
+        }
 
           <TableRow hover="true">
             <TableCell>Password: </TableCell>
