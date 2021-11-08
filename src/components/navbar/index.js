@@ -11,10 +11,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import FaceRetouchingNaturalSharpIcon from "@mui/icons-material/FaceRetouchingNaturalSharp";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import { getAuth, signOut } from "firebase/auth";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import logOut from "../auth/signOut";
-import { auth } from "../../firebase"
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -60,7 +58,7 @@ const StyledMenu = styled((props) => (
 }));
 
 const Navbar = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -73,14 +71,15 @@ const Navbar = () => {
   };
 
   const handleSignOutClick = () => {
-    logOut(dispatch)
-    handleClose()
-  }
+    logOut(dispatch);
+    handleClose();
+  };
 
   return (
     <>
       <Nav>
         <img src={Logo} alt="" />
+
         <Bars />
         <NavMenu>
           <NavLink to={REPORTED_BY_ME} activeStyle>
@@ -109,12 +108,11 @@ const Navbar = () => {
               <Stack direction="column" spacing={5}>
                 <Avatar
                   style={{
-                    left: "70%",
+                    left: "10%",
                     padding: "10",
                   }}
                 >
                   <FaceRetouchingNaturalSharpIcon />
-                  {/* {<img src="./pics/girl.png" alt="./pics/girl.png" />} */}
                 </Avatar>
               </Stack>
             </Button>
@@ -126,6 +124,7 @@ const Navbar = () => {
               }}
               anchorEl={anchorEl}
               open={open}
+              onClick={handleClick}
               onClose={handleClose}
             >
               <MenuItem onClick={handleClose} disableRipple>

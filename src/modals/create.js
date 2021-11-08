@@ -20,20 +20,10 @@ const taskValues = {
   status: "",
 };
 
-const statusItems = [
-  { id: 'draft', title: 'Draft' },
-  { id: 'in progress', title: 'In progress' },
-  { id: 'done', title: 'Done' },
-]
-
 export default function Create() {
   const history = useHistory();
 
   const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -98,19 +88,13 @@ export default function Create() {
                         onChange={handleInputChange}
                         error={errors.title}
                       />
-                      <Controls.Input
-                        label="Description"
-                        name="description"
-                        value={values.description}
-                        onChange={handleInputChange}
-                        error={errors.description}
-                      />
+
                       <Controls.Input
                         label="Assignee"
                         name="assignee"
                         value={values.assignee}
                         onChange={handleInputChange}
-                        error={errors.assignee} //ketic araj harcakan dnel
+                        error={errors.assignee}
                       />
                       <Controls.Input
                         label="Reporter"
@@ -129,13 +113,15 @@ export default function Create() {
                         options={taskValues}
                         error={errors.priority}
                       />
-                       <Controls.RadioGroup
-                        name="status"
-                        label="Status"
-                        value={values.status}
+
+                      <Controls.Multiline
+                        label="Description"
+                        name="description"
+                        id="filled-multiline-static"
+                        value={values.description}
                         onChange={handleInputChange}
-                        items={statusItems}
-                    />
+                        error={errors.description}
+                      />
                     </Grid>
                   </Grid>
                 </Form>
