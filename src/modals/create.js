@@ -27,6 +27,7 @@ export default function Create() {
 
   const handleClose = () => {
     setOpen(false);
+    console.log(values)
     history.goBack();
   };
 
@@ -36,7 +37,7 @@ export default function Create() {
       temp.title = values.title ? "" : "This field is required.";
     if ("description" in values)
       temp.description =
-        values.description.length > 9 ? "" : "Minimum 10 words required.";
+        values.description.length > 9 ? "" : "Minimum 10 letters required.";
     if ("assignee" in values)
       temp.assignee = values.assignee ? "" : "This field is required.";
     if ("reporter" in values)
@@ -61,6 +62,7 @@ export default function Create() {
       setValues();
       resetForm();
     }
+
   };
 
   return (

@@ -3,7 +3,7 @@ import { uuidv4 } from "uuid";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { makeStyles } from "@material-ui/styles";
 import { Route, Switch } from "react-router";
-import { MAIN_PAGE } from "../constants/paths";
+import { MAIN_PAGE, CREATE } from "../constants/paths";
 
 const useStyles = makeStyles({
   root: {
@@ -46,7 +46,7 @@ const columns = [
     description: "Reporter",
   },
   {
-    field: "Assigned to",
+    field: "Assignee",
     headerClassName: "super-app-theme--header",
     width: 200,
     description: "Assigned to",
@@ -64,7 +64,7 @@ const rows = [
     Title: "Change CSS",
     Priority: "Medium",
     Reporter: "asd",
-    "Assigned to": "asd",
+    Assignee: "asd",
     Status: "In Progress",
   },
   {
@@ -72,7 +72,7 @@ const rows = [
     Title: "Change CSS",
     Priority: "Low",
     Reporter: "asd",
-    "Assigned to": "asd",
+    Assignee: "asd",
     Status: "In Progress",
   },
   {
@@ -80,7 +80,7 @@ const rows = [
     Title: "Change CSS",
     Priority: "High",
     Reporter: "asd",
-    "Assigned to": "asd",
+    Assignee: "asd",
     Status: "In Progress",
   },
 ];
@@ -97,7 +97,7 @@ export default function ColumnSelectorGrid() {
 
   return (
     <Switch>
-      <Route exact path={MAIN_PAGE}>
+      <Route exact path={[MAIN_PAGE, CREATE]}>
         <div style={{ height: 650, width: "75%" }} className={classes.root}>
           <DataGrid
             getCellClassName={(column) => {
