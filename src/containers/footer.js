@@ -9,10 +9,10 @@ import { MAIN_PAGE } from "../constants/paths";
 export default function StickyFooter() {
   function Copyright() {
     return (
-      <Typography variant="body2" color="text.secondary">
+      <Typography variant="body2" color="#fff">
         {"Copyright © "}
-        <Link to={MAIN_PAGE} color="inherit">
-          Task Master
+        <Link to={MAIN_PAGE} color="#fff">
+          TaskMaster
         </Link>{" "}
         {new Date().getFullYear()}
         {"."}
@@ -40,11 +40,13 @@ export default function StickyFooter() {
           px: 3,
           mt: "auto",
           backgroundColor: (theme) =>
-            theme.palette.mode === "light" ? "#15cdfc" : "#15cdfc",
+            theme.palette.mode === "light" ? "#545454" : "#15cdfc",
         }}
       >
         <Container maxWidth="sm">
-          <Typography variant="body1">Task Master</Typography>
+          <Typography variant="body1" color="#fff">
+            TaskMaster
+          </Typography>
           <Copyright />
         </Container>
       </Box>

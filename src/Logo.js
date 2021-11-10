@@ -5,9 +5,9 @@ function Logo() {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xlink="http://www.w3.org/1999/xlink"
-      width="400"
-      height="400"
-      viewBox="0, 0, 400,400"
+      width="20"
+      height="20"
+      viewBox="0, 0, 20,20"
     >
       <g id="svgg">
         <path

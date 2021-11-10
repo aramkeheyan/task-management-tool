@@ -1,11 +1,11 @@
 import Input from "./input";
 import Select from "./select";
-import RadioGroup from "./radiogroup";
+import Multiline from "./multiline";
 
 const Controls = {
   Input,
   Select,
-  RadioGroup,
+  Multiline,
 };
 
 export default Controls;
