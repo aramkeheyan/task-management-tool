@@ -1,5 +1,5 @@
 import { Avatar, Button } from "material-ui";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ASSIGNED_TO_ME, CREATE, MAIN_PAGE, PROFILE, REPORTED_BY_ME } from "../../constants/paths";
 import { Nav, NavLink, Bars, NavMenu, NavBtnLink } from "../navbarComponents";
 import Logo from "../pics/image2vector.svg";
@@ -14,13 +14,14 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { useDispatch } from "react-redux"
 import logOut from "../auth/signOut";
 import { Link } from "react-router-dom";
-
-////////////////////
-import { collection, doc } from "@firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
 import { db } from "../../firebase";
 
 
+
+
 const StyledMenu = styled((props) => (
+  
   <Menu
     elevation={0}
     anchorOrigin={{
@@ -63,10 +64,21 @@ const StyledMenu = styled((props) => (
   },
 }));
 
+
 const Navbar = () => {
   const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const [users, setUsers] = useState([]);
+  console.log(users)
+  useEffect(
+  () => 
+  onSnapshot(collection(db, "users"), (snapshot)=> 
+    setUsers(snapshot.docs.map(doc => doc.data()))
+  ),
+  []
+)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -101,7 +113,7 @@ const Navbar = () => {
           <div>
             <Button
               style={{
-                left: "900%",
+                left: "450%",
               }}
               id="demo-customized-button"
               aria-controls="demo-customized-menu"
@@ -111,16 +123,17 @@ const Navbar = () => {
               disableElevation
               onClick={handleClick}
             >
-              <Stack direction="column" spacing={5}>
+              <Stack direction="column" spacing={1}>
                 <Avatar
                   style={{
-                    left: "70%",
-                    padding: "10",
+                    left: "50%",
+                    margin: "10",
                   }}
                 >
                   <FaceRetouchingNaturalSharpIcon />
                   {/* {<img src="./pics/girl.png" alt="./pics/girl.png" />} */}
                 </Avatar>
+                {users.map((user) => <div>{user.firstName}{user.lastName}</div>)}
               </Stack>
             </Button>
 

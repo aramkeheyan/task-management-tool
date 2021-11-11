@@ -1,4 +1,4 @@
-// npm install --save react-images-uploading - need to be installed
+// npm install --save react-images-uploading => need to be installed
 import React, {useState} from "react";
 import Button from '@mui/material/Button';
 import ImageUploading from "react-images-uploading";

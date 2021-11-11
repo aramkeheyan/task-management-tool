@@ -50,7 +50,8 @@ async function Register({ firstName, lastName, email, password }, dispatch) {
            firstName,
            lastName,
            email,
-           authProvider: "local",
+           password
+          //  authProvider: "local",
        });
        dispatch(setLoggedInUser(user));
       // console.log ("The new ID is: " + docRef.id);
@@ -92,7 +93,7 @@ export default function SignUp() {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "#15cdfc" }}>
+              <Avatar sx={{ m: 1, backgroundColor: "#15cdfc" }}>
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
@@ -153,7 +154,7 @@ export default function SignUp() {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
-                  bgcolor="#15cdfc"
+                  backgroundColor="#15cdfc"
                   margin="500px"
                 >
                   Sign Up

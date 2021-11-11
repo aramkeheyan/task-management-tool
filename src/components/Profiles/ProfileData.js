@@ -13,24 +13,16 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import Dialogs from "../Profiles/Dialogs"
 
-///////////////////////////////FireStore dependencies
+/////////////////////////////////////FireStore dependencies
 import { onSnapshot, collection } from "firebase/firestore";
 import { db } from "../../firebase";
 
-
-
 export default function DescriptionTable() {
-  //  const[name, setName] = useState("");
-  //  const[surname, setSurname] = useState("Hamilton");
-  //  const[email, setEmail] = useState("KWaca@gmail.com");
-
-
-   ///////////////////////// Dialog
-   const FormDialog = (props)=> {
+   ///////////////////////// Edit button dialog - start
+    const FormDialog = ()=> {
     const [open, setOpen] = useState(false);
-   /////////////////////////// Edit button dialog - start
+
     const handleClickOpen = () => {
       setOpen(true);
     };
@@ -63,8 +55,8 @@ export default function DescriptionTable() {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseCancel}>Cancel</Button>
             <Button onClick={handleCloseSave}>Save</Button>
+            <Button onClick={handleCloseCancel}>Cancel</Button>
           </DialogActions>
         </Dialog>
       </div>
@@ -72,25 +64,23 @@ export default function DescriptionTable() {
   }
   ///////////////////////// Edit button dialog - end
 
-//////////////////////////////////////////// Main return 
-    /////////////////////////////////////////
     const [users, setUsers] = useState([]);
     console.log(users);
     useEffect(
       () => 
       onSnapshot(collection(db, "users"), (snapshot)=> 
-        setUsers(snapshot.docs.map(doc => doc.data()))
+        setUsers(snapshot.docs.map(doc => ({...doc.data(), id:doc.id})))
       ),
       []
     )
-    ///////////////////////////////////////
+////////////////////////// Main return 
     return (
     <TableContainer
      component={Paper}>
       <Table sx={{ minWidth: 400 }} size="medium" aria-label="a dense table">
         <TableBody>
         {users.map((user) => 
-          <TableRow hover="true" key={user.id}>
+          <TableRow hover="true" key={user.uid}>
             <TableCell>First Name: </TableCell>
             <TableCell align="left">{user.firstName}</TableCell>
             <FormDialog />
@@ -113,13 +103,14 @@ export default function DescriptionTable() {
           </TableRow>
          )
         }
-
-          <TableRow hover="true">
+        {users.map((user) => 
+          <TableRow hover="true" key={user.id}>
             <TableCell>Password: </TableCell>
-            <TableCell align="left">**********</TableCell>
+            <TableCell align="left">{user.password}</TableCell>
             <FormDialog />
           </TableRow>
-
+          )
+        }
         </TableBody>
       </Table>
     </TableContainer>

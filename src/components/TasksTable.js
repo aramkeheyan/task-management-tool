@@ -7,10 +7,10 @@ import { MAIN_PAGE, CREATE } from "../constants/paths";
 const useStyles = makeStyles({
   root: {
     "& .super-app-theme--header": {
-      // backgroundColor: "red"
+      backgroundColor: "#86D3DC"
     },
     "& .medium": {
-      backgroundColor: "yellow",
+      backgroundColor: "grey",
       color: "black",
       borderRadius: 5,
     },
@@ -20,7 +20,9 @@ const useStyles = makeStyles({
       borderRadius: 5,
     },
     "& .low": {
+      backgroundColor: "#0ff",
       color: "black",
+      borderRadius: 5,
     },
   },
 });
@@ -60,44 +62,39 @@ const columns = [
 const rows = [
   {
     id: 1,
-    Title: "Change CSS",
+    Title: "Change HTML",
     Priority: "Medium",
-    Reporter: "asd",
-    Assignee: "asd",
-    Status: "In Progress",
+    Reporter: "Jhon",
+    Assignee: "Jack",
+    Status: "Done",
   },
   {
     id: 2,
     Title: "Change CSS",
     Priority: "Low",
-    Reporter: "asd",
-    Assignee: "asd",
+    Reporter: "Roger",
+    Assignee: "Kim",
     Status: "In Progress",
   },
   {
     id: 3,
-    Title: "Change CSS",
+    Title: "Change JS",
     Priority: "High",
-    Reporter: "asd",
-    Assignee: "asd",
-    Status: "In Progress",
+    Reporter: "Katy",
+    Assignee: "Kim",
+    Status: "Draft",
   },
 ];
 
 let data = { columns, rows };
 
 export default function ColumnSelectorGrid() {
-  // const { data } = useDemoData({
-  //   dataSet: 'Commodity',
-  //   rowLength: 10,
-  //   maxColumns: 10,
-  // });
   let classes = useStyles();
 
   return (
     <Switch>
       <Route exact path={[MAIN_PAGE, CREATE]}>
-        <div style={{ height: 650, width: "75%" }} className={classes.root}>
+        <div style={{ height: 550, width: "66%" }} className={classes.root}>
           <DataGrid
             getCellClassName={(column) => {
               if (column.field === "Priority") {
