@@ -54,7 +54,7 @@ async function Register({ firstName, lastName, email, password }, dispatch) {
           //  authProvider: "local",
        });
        dispatch(setLoggedInUser(user));
-      // console.log ("The new ID is: " + docRef.id);
+       console.log("The new registered user's ID is: " + docRef.id)
    } catch (err) {
        console.log(err.code, err.message)
    }

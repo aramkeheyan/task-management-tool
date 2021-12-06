@@ -15,7 +15,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 /////////////////////////////////////FireStore dependencies
-import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection, setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 export default function DescriptionTable() {
@@ -29,7 +29,11 @@ export default function DescriptionTable() {
     const handleClose = () => {
       setOpen(false);
     };
-    const handleCloseSave = () => {
+    const handleCloseSave = () => { 
+      /* should be async and be passed (id)*/
+      // const docRef = doc(db, "users", id);
+      // const payload = {firstName, lastName, email}
+      // setDoc(docRef, payload);
       setOpen(false);
     };
     const handleCloseCancel = () => {
@@ -69,7 +73,7 @@ export default function DescriptionTable() {
     useEffect(
       () => 
       onSnapshot(collection(db, "users"), (snapshot)=> 
-        setUsers(snapshot.docs.map(doc => ({...doc.data(), id:doc.id})))
+        setUsers(snapshot.docs.map(doc => ({...doc.data(), uid:doc.id})))
       ),
       []
     )
@@ -88,7 +92,7 @@ export default function DescriptionTable() {
           )
         }
         {users.map((user) => 
-          <TableRow hover="true" key={user.id} >
+          <TableRow hover="true" key={user.uid} >
             <TableCell>Last Name: </TableCell>
             <TableCell align="left">{user.lastName}</TableCell>
             <FormDialog />
@@ -96,7 +100,7 @@ export default function DescriptionTable() {
           )
         }
         {users.map((user) => 
-          <TableRow hover="true" key={user.id}>
+          <TableRow hover="true" key={user.uid}>
             <TableCell>Email: </TableCell>
             <TableCell align="left">{user.email}</TableCell>
             <FormDialog />
@@ -104,9 +108,9 @@ export default function DescriptionTable() {
          )
         }
         {users.map((user) => 
-          <TableRow hover="true" key={user.id}>
+          <TableRow hover="true" key={user.uid}>
             <TableCell>Password: </TableCell>
-            <TableCell align="left">{user.password}</TableCell>
+            <TableCell align="left">*********</TableCell>
             <FormDialog />
           </TableRow>
           )

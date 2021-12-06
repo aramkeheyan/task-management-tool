@@ -71,7 +71,6 @@ const Navbar = () => {
   const open = Boolean(anchorEl);
 
   const [users, setUsers] = useState([]);
-  console.log(users)
   useEffect(
   () => 
   onSnapshot(collection(db, "users"), (snapshot)=> 
@@ -133,7 +132,7 @@ const Navbar = () => {
                   <FaceRetouchingNaturalSharpIcon />
                   {/* {<img src="./pics/girl.png" alt="./pics/girl.png" />} */}
                 </Avatar>
-                {users.map((user) => <div>{user.firstName}{user.lastName}</div>)}
+                {users.map((user) => <div>{user.firstName} {"_"} {user.lastName}</div>)}
               </Stack>
             </Button>
 
